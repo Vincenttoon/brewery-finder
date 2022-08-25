@@ -9,9 +9,17 @@ IF I want to find something near me
 THEN I can search by distance and what is around me
 IF I want to look back on what has interested me
 THEN local storage can access my liked data
+WHEN I click on a listed brewery
+THEN a Google Map with Information Displays
+
+![screenshot of draft board](./assets/images/draft-board.jpg)
 
 
+Open Brewery Main API
 https://www.openbrewerydb.org/documentation
+
+Google Maps API
+https://developers.google.com/maps/documentation/places/web-service
 
 
 
