@@ -4,7 +4,7 @@
 // need input let to be city for API
 
 // function to grab data from breweries by city
-const apiUrlCity = `https://api.openbrewerydb.org/breweries?by_city=saint_louis&per_page=6`
+const apiUrlCity = `https://api.openbrewerydb.org/breweries?by_city=saint_louis&size=20`
 
 fetch(apiUrlCity)
     // console.log(apiUrlCity);
@@ -17,8 +17,10 @@ fetch(apiUrlCity)
         const randomBrewery = data[Math.floor(Math.random() * data.length)];
         console.log(randomBrewery)
         // variables for data information
-        data.forEach((randomBrewery) => renderBreweryCards(randomBrewery));
+        renderBreweryCards(randomBrewery);
+        
     });
+
 
 // function to grab data from city and display on page
 
@@ -42,9 +44,13 @@ const renderBreweryCards = (brewery) => {
     );
 
     breweryContainer.append(breweryCard);
+
+    // displayMaps();
 }
-// append each numbered object into individual container
-// append each individual container into parent container in column form
+
+function displayMaps() {
+    
+}
 // Make cards clickable to google map link 
 
 // Google Map API to display info from brewery/near me results
