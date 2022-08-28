@@ -34,13 +34,15 @@ const renderBreweryCards = (brewery) => {
     const breweryAddress = $('<p>').text(brewery.street);
     const breweryPhone = $('<p>').text(brewery.phone);
     const breweryWebsite = $('<a>').text(brewery.website_url);
+    const saveBtn = $('<button>').text('Save This Info!');
 
     breweryCard.append(
         breweryName,
         breweryType,
         breweryAddress,
         breweryPhone,
-        breweryWebsite
+        breweryWebsite,
+        saveBtn
     );
 
     breweryContainer.append(breweryCard);
@@ -48,7 +50,27 @@ const renderBreweryCards = (brewery) => {
     // displayMaps();
 }
 
-function displayMaps() {
+function fetchMaps(brewery) {
+
+    const mapsApiKey = 'AIzaSyAnLQaZQJJSUlJR12J-vpuXghllvQP2nx4';
+    let street = brewery.street;
+    let city = brewery.city;
+    let state = brewery.state;
+    let country = brewery.country;
+
+    const apiUrlMap = `https://maps.googleapis.com/maps/api/geocode/json?new_forward_geocoder=true&address=${street},+${city},+${state}&key=AIzaSyAnLQaZQJJSUlJR12J-vpuXghllvQP2nx4`;
+
+    fetch(apiUrlMap)
+    // might not need to json map
+    // .then(function(response){
+    //     return(response.json());
+    // })
+    makeMaps()
+}
+
+// function to display map
+function makeMaps () {
+    const mapContainer = $('#map-container');
     
 }
 // Make cards clickable to google map link 
