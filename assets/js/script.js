@@ -1,4 +1,6 @@
 // variables from HTML
+const saveArray = [];
+const wellInformation = ["Stop 1", "Stop 2", "Stop 3", "Stop 4", "Stop 5", "Stop 6", "Stop 7", "Stop 8"];
 
 // button action to take input data and feed to brewery by city API
 // need input let to be city for API
@@ -11,33 +13,43 @@ $('#search-btn').on('click', function() {
 
     fetch(apiUrlCity)
     // console.log(apiUrlCity);
+    // fetch data from API
         .then(function(response)
         {return response.json();
         })
         .then(function(data){
             console.log(data)
 
+        // Choose a random brewery from the given array
         const randomBrewery = data[Math.floor(Math.random() * data.length)];
         console.log(randomBrewery)
-        // variables for data information
+        // start rendering to screen
         renderBreweryCards(randomBrewery);
         
     });
+
+    // Save city searches?
+    // const searchCont = $('#search-container');
+    // const cityBtn = $('<button>').text(city);
+
+    // searchCont.append(cityBtn);
 })
 
 // function to grab data from city and display on page
 
 const renderBreweryCards = (brewery) => {
+    // rendering data fetched to page
+    const breweryCity = brewery.city;
     const breweryContainer = $('#brewery-container');
     const breweryCard = $('<div>').addClass(
-        'brewery-card bg-gray-300 rounded-lg p-4 m-4 w-50'
+        'brewery-card bg-gray-300 rounded-lg p-4 m-4 w-80'
     );
     const breweryName = $('<h2>').text(brewery.name)
     const breweryType = $('<p>').text(brewery.brewery_type);
     const breweryAddress = $('<p>').text(brewery.street);
     const breweryPhone = $('<p>').text(brewery.phone);
     const breweryWebsite = $('<a>').text(brewery.website_url);
-    const saveBtn = $('<button>').text('Save This Info!');
+    const saveBtn = $('<button>').attr('id', 'save-btn').text('Save This Info!');
 
     breweryCard.append(
         breweryName,
@@ -47,8 +59,31 @@ const renderBreweryCards = (brewery) => {
         saveBtn,
         breweryWebsite,
     );
-
     breweryContainer.append(breweryCard);
+
+    const saveName = brewery.name;
+    const saveCity = brewery.street;
+    const saveUrl = brewery.website_url;
+
+    let saveData = {
+        saveName,
+        saveCity,
+        saveUrl
+    }
+
+    saveArray.push(saveData);
+
+    saveInfo(this);
+    displayMap()
+
+}
+
+// Why won't this function? everything seems right
+
+function saveInfo () {
+    $('#save-btn').on('click', function(){
+        localStorage.setItem(wellInformation, JSON.stringify(saveArray));
+    });
 }
 
 
