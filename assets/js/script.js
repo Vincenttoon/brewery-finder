@@ -53,7 +53,7 @@ const renderBreweryCards = (brewery) => {
     const breweryType = $('<p>').text(brewery.brewery_type);
     const breweryAddress = $('<p>').text(brewery.street + ", " + brewery.city + ", " + brewery.state);
     const breweryPhone = $('<p>').text(brewery.phone);
-    const breweryWebsite = $('<a>').text(brewery.website_url);
+    const breweryWebsite = $('<a>').text(brewery.website_url).attr('href', brewery.website_url);
     const saveBtn = $('<button>').attr('id', 'save-btn').addClass('save-btn').text('Save This Info!');
 
     breweryCard.append(
