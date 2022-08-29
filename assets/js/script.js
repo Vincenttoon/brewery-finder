@@ -117,4 +117,3 @@ function saveInfo () {
 
 
 // Append map data to page on click of brewery
-

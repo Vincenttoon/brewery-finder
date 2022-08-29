@@ -1,4 +1,58 @@
-.search-btn {
-    background-color: blue;
+.main-title{
+    background-color: teal;
     color: white;
+    padding: 10px;
+    margin-top: 10px;
+    text-align: center;
+    font-size: 1.5em;
+}
+.search-side {
+    background-color: rgb(157, 172, 187);
+    color: white;
+    padding: 20px;
+    min-height: 700px;
+}
+
+.search-side input, .search-side button {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    outline: none;
+}
+
+.search-side input
+{
+    border: 1px solid teal;
+    border-radius: 10px;
+    font-size: 1.2em;
+}
+.search-side button{
+    background-color: rgb(45, 45, 227);
+    color: white;
+    border-radius: 30px;
+}
+.search-result p{
+    margin-top: 20px;
+    text-align: center;
+    background-color: silver;
+    font-size: 1.2em;
+    padding: 5px 0px;
+    border-radius: 10px;
+}
+.sub-title{
+    background-color: rgb(58, 156, 156);
+    color: white;
+    margin-top: 10px;
+    text-align: center;
+}
+​
+.result-list{
+    background-color: rgb(22, 68, 68);
+    color: white;
+    padding: 30px;
+    min-height: 650px;
+    text-align: center;
+}
+.google-map{
+    background-color: rgb(204, 176, 176);
 }
