@@ -4,15 +4,18 @@
 // need input let to be city for API
 
 // function to grab data from breweries by city
-const apiUrlCity = `https://api.openbrewerydb.org/breweries?by_city=saint_louis&size=20`
+$('#search-btn').on('click', function() {
+    const city = $("#city").val().trim();
 
-fetch(apiUrlCity)
+    const apiUrlCity = `https://api.openbrewerydb.org/breweries?by_city=${city}&size=20`
+
+    fetch(apiUrlCity)
     // console.log(apiUrlCity);
-    .then(function(response)
-    {return response.json();
-    })
-    .then(function(data){
-        console.log(data)
+        .then(function(response)
+        {return response.json();
+        })
+        .then(function(data){
+            console.log(data)
 
         const randomBrewery = data[Math.floor(Math.random() * data.length)];
         console.log(randomBrewery)
@@ -20,16 +23,16 @@ fetch(apiUrlCity)
         renderBreweryCards(randomBrewery);
         
     });
-
+})
 
 // function to grab data from city and display on page
 
 const renderBreweryCards = (brewery) => {
     const breweryContainer = $('#brewery-container');
     const breweryCard = $('<div>').addClass(
-        'brewery-card bg-gray-300 rounded-lg p-4 m-4 w-80'
+        'brewery-card bg-gray-300 rounded-lg p-4 m-4 w-50'
     );
-    const breweryName = $('<h2>').text(brewery.name);
+    const breweryName = $('<h2>').text(brewery.name)
     const breweryType = $('<p>').text(brewery.brewery_type);
     const breweryAddress = $('<p>').text(brewery.street);
     const breweryPhone = $('<p>').text(brewery.phone);
@@ -41,13 +44,11 @@ const renderBreweryCards = (brewery) => {
         breweryType,
         breweryAddress,
         breweryPhone,
+        saveBtn,
         breweryWebsite,
-        saveBtn
     );
 
     breweryContainer.append(breweryCard);
-
-    // fetchMaps();
 }
 
 
