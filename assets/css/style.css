@@ -1,3 +1,10 @@
+:root {
+    --primary: #FFCB42;
+    --secondary: #FFB200;
+    --third: #277BC0;
+    --fourth: #FFF4CF;
+}
+
 .main-title{
     background-color: teal;
     color: white;
@@ -7,8 +14,8 @@
     font-size: 1.5em;
 }
 .search-side {
-    background-color: rgb(157, 172, 187);
-    color: white;
+    background-color: var(--fourth);
+    color: var(--third);
     padding: 20px;
     min-height: 700px;
 }
@@ -27,9 +34,14 @@
     font-size: 1.2em;
 }
 .search-side button{
-    background-color: rgb(45, 45, 227);
+    background-color: var(--third);
     color: white;
     border-radius: 30px;
+}
+
+.search-btn:hover {
+    background-color: #FFB200;
+    color: black;
 }
 .search-result p{
     margin-top: 20px;
@@ -49,10 +61,37 @@
 .result-list{
     background-color: rgb(22, 68, 68);
     color: white;
-    padding: 30px;
+    padding: 15px;
     min-height: 650px;
     text-align: center;
 }
 .google-map{
     background-color: rgb(204, 176, 176);
+}
+
+.brewery-card {
+    background-color: var(--primary);
+    color: black;
+    border-radius: 25px;
+}
+
+.result-head {
+    background-color: #277BC0;
+    color: var(--fourth);
+    width: 100%;
+}
+
+.save-btn {
+    background-color: var(--third);
+    color: var(--fourth);
+    border-radius: 4px;
+    display: flex;
+    justify-content: flex-end;
+    font-size: 20px;
+    margin-top: 6px;
+}
+
+.save-btn:hover {
+    background-color: #FFF4CF;
+    color: #277BC0;
 }

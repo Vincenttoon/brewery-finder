@@ -41,23 +41,25 @@ const renderBreweryCards = (brewery) => {
     // rendering data fetched to page
     const breweryCity = brewery.city;
     const breweryContainer = $('#brewery-container');
-    const breweryCard = $('<div>').addClass(
-        'brewery-card bg-gray-300 rounded-lg p-4 m-4 w-80'
+    const breweryCard = $('<div>').attr('id', 'brewery-card').addClass(
+        'brewery-card bg-gray-300 rounded-lg p-4 m-4 w-80 is-two-thirds'
     );
-    const breweryName = $('<h2>').text(brewery.name)
+    const breweryName = $('<h2>').text(brewery.name).addClass(
+        'is-size-3'
+    )
     const breweryType = $('<p>').text(brewery.brewery_type);
-    const breweryAddress = $('<p>').text(brewery.street);
+    const breweryAddress = $('<p>').text(brewery.street + ", " + brewery.city + ", " + brewery.state);
     const breweryPhone = $('<p>').text(brewery.phone);
     const breweryWebsite = $('<a>').text(brewery.website_url);
-    const saveBtn = $('<button>').attr('id', 'save-btn').text('Save This Info!');
+    const saveBtn = $('<button>').attr('id', 'save-btn').addClass('save-btn').text('Save This Info!');
 
     breweryCard.append(
         breweryName,
         breweryType,
         breweryAddress,
         breweryPhone,
-        saveBtn,
         breweryWebsite,
+        saveBtn
     );
     breweryContainer.append(breweryCard);
 
@@ -74,11 +76,12 @@ const renderBreweryCards = (brewery) => {
     saveArray.push(saveData);
 
     saveInfo(this);
-    displayMap()
+    // displayMap()
 
 }
 
 // Why won't this function? everything seems right
+
 
 function saveInfo () {
     $('#save-btn').on('click', function(){
