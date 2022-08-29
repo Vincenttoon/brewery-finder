@@ -47,32 +47,31 @@ const renderBreweryCards = (brewery) => {
 
     breweryContainer.append(breweryCard);
 
-    // displayMaps();
+    // fetchMaps();
 }
 
-function fetchMaps(brewery) {
 
-    const mapsApiKey = 'AIzaSyAnLQaZQJJSUlJR12J-vpuXghllvQP2nx4';
-    let street = brewery.street;
-    let city = brewery.city;
-    let state = brewery.state;
-    let country = brewery.country;
 
-    const apiUrlMap = `https://maps.googleapis.com/maps/api/geocode/json?new_forward_geocoder=true&address=${street},+${city},+${state}&key=AIzaSyAnLQaZQJJSUlJR12J-vpuXghllvQP2nx4`;
 
-    fetch(apiUrlMap)
-    // might not need to json map
-    // .then(function(response){
-    //     return(response.json());
-    // })
-    makeMaps()
-}
 
-// function to display map
-function makeMaps () {
-    const mapContainer = $('#map-container');
-    
-}
+
+
+
+    // let street = brewery.street;
+    // let city = brewery.city;
+    // let state = brewery.state;
+    // let country = brewery.country;
+
+    // const apiUrlMap = `https://maps.googleapis.com/maps/api/geocode/json?new_forward_geocoder=true&address=${street},+${city},+${state}&key=AIzaSyAnLQaZQJJSUlJR12J-vpuXghllvQP2nx4`;
+
+    // fetch(apiUrlMap)
+    // // might not need to json map
+    // // .then(function(response){
+    // //     return(response.json());
+    // // })
+    // const mapContainer = $('#map-container');
+
+// function to display maps
 // Make cards clickable to google map link 
 
 // Google Map API to display info from brewery/near me results
@@ -83,5 +82,3 @@ function makeMaps () {
 
 // Append map data to page on click of brewery
 
-
-// 
