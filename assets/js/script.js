@@ -1,13 +1,16 @@
 // variables from HTML
 const saveArray = [];
 const wellInformation = ["Stop 1", "Stop 2", "Stop 3", "Stop 4", "Stop 5", "Stop 6", "Stop 7", "Stop 8"];
-
+const breweryContainerEl = document.querySelector('#brewery-container');
+const searchButton = document.querySelector('#search-btn');
 // button action to take input data and feed to brewery by city API
-// need input let to be city for API
 
+
+// need to make this a reusable function
 // function to grab data from breweries by city
 $('#search-btn').on('click', function() {
     const city = $("#city").val().trim();
+
 
     const apiUrlCity = `https://api.openbrewerydb.org/breweries?by_city=${city}&size=20`
 
@@ -43,7 +46,7 @@ const renderBreweryCards = (brewery) => {
     const breweryContainer = $('#brewery-container');
     const breweryCard = $('<div>').attr('id', 'brewery-card').addClass(
         'brewery-card bg-gray-300 rounded-lg p-4 m-4 w-80 is-two-thirds'
-    );
+    )
     const breweryName = $('<h2>').text(brewery.name).addClass(
         'is-size-3'
     )
@@ -80,7 +83,7 @@ const renderBreweryCards = (brewery) => {
 
 }
 
-// Why won't this function? everything seems right
+// Save info on each card with button click if possible?
 
 
 function saveInfo () {
@@ -89,13 +92,14 @@ function saveInfo () {
     });
 }
 
+// parse saved data to page below buttons
 
+// pull map data from google map api
 
+// function to display map on page
+// function displayMap() {
 
-
-
-
-
+// }
     // let street = brewery.street;
     // let city = brewery.city;
     // let state = brewery.state;
@@ -111,12 +115,5 @@ function saveInfo () {
     // const mapContainer = $('#map-container');
 
 // function to display maps
-// Make cards clickable to google map link 
 
-// Google Map API to display info from brewery/near me results
-
-
-// button action to relay API data from Near Me
-
-
-// Append map data to page on click of brewery
+// function to Make cards clickable to google map link 

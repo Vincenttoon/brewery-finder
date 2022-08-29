@@ -12,19 +12,28 @@
 </head>
 <body>
     <div class="card">
-        <div class="card-header has-background-warning is-widescreen-full">
+        <div class="card-header has-background-warning is-widescreen-full header-container">
             <div class="mb-*1">
-                <p class="card-content has-text-black-bis has-text-centered is-size-2">Find Your Brew!</p>
-                <p class="card-content has-text-black-bis has-text-centered is-size-4">Find a Brewery, Cidery, or Brewpub wherever you are headed!</p>
-                <p class="card-content has-text-black-bis">Whether you're searching your local town, or heading to a new city we've got you covered. Just search where you are going and BOOM: We present you with a local establishment</p>
+                <p class="card-content has-text-black-bis has-text-centered is-size-2 pb-2 header-head">Find Your Brew!</p>
+                <p class="card-content has-text-black-bis has-text-centered is-size-4 p-0">Find a Brewery, Cidery, or Brewpub wherever you are headed!</p>
+                <p class="card-content has-text-black-bis pt-1">Whether you're searching your local town or heading to a new city, we've got you covered. Just search where you are going and BOOM: We present you with a local establishment</p>
             </div>
         </div>
         <div class="columns">
-            <div class="column is-one-quarter">
+            <div class="column is-one-quarter pr-0">
                 <div class="search-side">
                     <h2>Search for Cities</h2>
                     <input type="text" placeholder="search..." id="city">
                     <button class="my-3 search-btn" id="search-btn">Find your brew!</button>
+                    <ul style="list-style-type:square">
+                        <h4 class="has-text-centered is-size-4">User Notes:</h4>
+                        <li>When searching for a city like "St. Louis", make sure to spell out the full abbreviated name. (i.e: "Saint Louis")</li>
+                        <li>Make sure to check the brewery type! This is a public resource and some places have since closed.</li>
+                        <li>Always remember to find a ride if you have too much fun at your chosen establishment.
+                            <a href="https://uber.com">uber.com</a>
+                        </li>
+
+                    </ul>
                     <button>search for near</button>
                     <div class="search-result" id="saved-localtions">
                         <p>result</p>
@@ -34,7 +43,7 @@
 ​
                 </div>
             </div>
-            <div class="column is-full">
+            <div class="column is-full pl-0">
                 <div class="column is-three-quarters result-head">
                   <div class="column is-full">
                     <h2 class="has-text-centered">Results:</h2>

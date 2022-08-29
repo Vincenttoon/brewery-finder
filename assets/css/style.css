@@ -95,3 +95,14 @@
     background-color: #FFF4CF;
     color: #277BC0;
 }
+
+.header-head {
+    font-weight: 600;
+    text-decoration: underline;
+    text-decoration-color: var(--third)
+}
+
+.header-container {
+    display: flex;
+    justify-content: center;
+}
