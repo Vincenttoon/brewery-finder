@@ -106,3 +106,17 @@
     display: flex;
     justify-content: center;
 }
+
+.map-container {
+    display: flex;
+    justify-content: center;
+    height: 400px;
+    width: 500px;
+    padding-left: 40px;
+    margin: 20px;
+}
+
+.brewery-container {
+    padding-left: 35px;
+    padding-top: 5px;
+}
