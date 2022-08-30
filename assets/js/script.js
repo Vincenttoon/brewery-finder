@@ -268,7 +268,7 @@ async function findLatLon(street, city, state, name) {
 
 async function initMap(lat, lon, name) {
     // Create a map object and specify the Dom element for display.
-    let map = google.maps.Map(document.getElementById('map-container'), {
+    let map = new google.maps.Map(document.getElementById('map-container'), {
         center: {lat: lat, lng: lon},
         scrollwheel: false,
         zoom: 13
