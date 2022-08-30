@@ -66,19 +66,21 @@ const renderBreweryCards = (brewery) => {
     );
     breweryContainer.append(breweryCard);
 
-    const saveName = brewery.name;
-    const saveCity = brewery.street;
-    const saveUrl = brewery.website_url;
+    let saveName = brewery.name;
+    let saveCity = brewery.city;
+    let saveAddress = brewery.address;
+    let saveUrl = brewery.website_url;
 
     let saveData = {
-        saveName,
-        saveCity,
-        saveUrl
+        breweryName: saveName,
+        breweryAddress: saveAddress,
+        breweryCity: saveCity,
+        breweryUrl: saveUrl
     }
 
     saveArray.push(saveData);
 
-    saveInfo(this);
+    saveInfo(saveData);
     // displayMap()
 
 }
@@ -86,9 +88,9 @@ const renderBreweryCards = (brewery) => {
 // Save info on each card with button click if possible?
 
 
-function saveInfo () {
+function saveInfo (saveData) {
     $('#save-btn').on('click', function(){
-        localStorage.setItem(wellInformation, JSON.stringify(saveArray));
+        localStorage.setItem(saveData.breweryName, JSON.stringify(saveData));
     });
 }
 
