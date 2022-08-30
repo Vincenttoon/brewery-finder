@@ -182,18 +182,25 @@ const renderBreweryCards = (brewery) => {
   // rendering data fetched to page
   const breweryCity = brewery.city;
   const breweryContainer = $("#brewery-container");
+  const returnContainer = $("<div>");
   const breweryCard = $("<div>")
     .attr("id", "brewery-card")
     .addClass("brewery-card bg-gray-300 rounded-lg p-4 m-4 w-80 is-two-thirds");
+
+    // const nameIcon = $('<i>').addClass("fa-solid fa-building").text(" ");
   const breweryName = $("<h2>").text(brewery.name).addClass("is-size-3");
+//   const typeIcon = $('<i>').addClass("fa-solid fa-minimize").text(" ");
   const breweryType = $("<p>").text(brewery.brewery_type);
   const breweryAddress = $("<p>").text(
     brewery.street + ", " + brewery.city + ", " + brewery.state
   );
+//   const addressIcon = $('<i>').addClass("fa-solid fa-map-location").text(" ");
   const breweryPhone = $("<p>").text(brewery.phone);
+//   const phoneIcon = $('<i>').addClass("fa-solid fa-mobile-retro").text(" ");
   const breweryWebsite = $("<a>")
     .text(brewery.website_url)
     .attr("href", brewery.website_url);
+    // const websiteIcon = $('<i>').addClass("fa-solid fa-laptop").text(" ");
   const saveBtn = $("<button>")
     .attr("id", "save-btn-id")
     .addClass("save-btn")
