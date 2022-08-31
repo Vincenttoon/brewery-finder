@@ -243,7 +243,7 @@ function saveInfo(saveData) {
 }
 
 // Use gathered data from OpenBrewery fetch and passes this data on to Google Map API to start location focus for map
-async function findLatLon(street, city, state, name) {
+async function findLatLon(street, city, state, name, website_url) {
     // replaces spaces in data with +'s so the data in functional for Google Maps API
   let formatStreet = street.replace(/\s/g, "+");
   let formatCity = city.replace(/\s/g, "+");
