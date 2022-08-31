@@ -13,8 +13,14 @@
     text-align: center;
     font-size: 1.5em;
 }
+
+.lead-header {
+    background-color: #FFCB42;
+    background-image: linear-gradient(45deg, #fff4cf 0%, #ffb200 52%, #277BC0 95%);
+}
 .search-side {
     background-color: var(--fourth);
+    background-image: linear-gradient(10deg, #ffb200 0%, #fff4cf 100%);
     color: var(--third);
     padding: 20px;
     min-height: 700px;
@@ -77,6 +83,7 @@
 
 .result-head {
     background-color: #277BC0;
+    background-image: linear-gradient(40deg, #fff4cf 0%, #ffb200 60%, #277BC0 99%);
     color: var(--fourth);
     width: 100%;
 }
