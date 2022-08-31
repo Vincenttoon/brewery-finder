@@ -39,6 +39,7 @@
     border-radius: 10px;
     font-size: 1.2em;
 }
+
 .search-side button{
     background-color: var(--third);
     color: white;
@@ -157,6 +158,18 @@
     background-color: var(--third);
     color: #a9a9a9;
 
+}
+
+.clear-btn {
+    margin-left: 5px;
+    margin-top: 5px;
+    background-color: red;
+    color: white;
+}
+
+.clear-btn:hover {
+    background-color: white;
+    color: red;
 }
 
 @media screen and (max-width: 575px) {

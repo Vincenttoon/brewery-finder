@@ -1,5 +1,7 @@
-<!-- ![screenshot of home page](.) -->
-<!-- ![screenshot of page displaying search functionality](.) -->
+![screenshot of home page](./assets/images/home-screen.jpg)
+![screenshot of page displaying search functionality](./assets/images/post-search.jpg)
+![screenshot of js displayed buttons](./assets/images/showing-new-btns.jpg)
+
 
 # Brewery Finder
 ## Group Project 1
