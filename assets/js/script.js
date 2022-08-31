@@ -319,4 +319,8 @@ $('.saved-brewery').on('click', function (event) {
     renderBreweryCards(breweryData);
 });
 
+$('.clear-btn').on('click', function(event) {
+    localStorage.clear();
+});
+
 $("#search-form").on("submit", handleSubmit);
