@@ -46,7 +46,7 @@
 ### Plans for Future Changes
 
 - Either have maps appear per card append or allow an on click function where the map reloads to your desired page.
-- More Style added to button, headers, and page.
+- More Style added to button, headers, and page (particularly icons).
 - Make Search for Near button, that prompts (modal) you to search for nearby breweries based on your current location
 
 ### USER STORY
@@ -67,6 +67,3 @@ and what is available nearby
 
 #### Original Draft Framework of Homescreen
 ![screenshot of draft board](./assets/images/draft-board.jpg)
-
-
-
