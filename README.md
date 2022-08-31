@@ -33,7 +33,7 @@
 ### Things Learned
 
 - async and await: async functions run on page load/when function is called. await is a parameter given to a JS action so it is called whenever data is loaded/time is passed the JS carries out it's function.
-- use of reverse quotes ` `: allows for Jquery inserts onto API links.
+- use of reverse quotes (`): allows for Jquery inserts onto API links.
 - (/\s/g helps replace spaces: ask Josh
 - how to implement, place and work the google maps API: This was very hard and required a lot of steps but felt good to get the map working
 
