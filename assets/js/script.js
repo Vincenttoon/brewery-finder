@@ -71,6 +71,11 @@ function handleSubmit(event) {
   event.preventDefault();
   const city = $("#city").val().trim();
 
+  if(city == "")
+  {
+      alert("Please provide a city name!");
+  }
+
   callCityApi(city);
 }
 
@@ -85,6 +90,7 @@ function callCityApi(city) {
       return response.json();
     })
     .then(function (data) {
+        console.log(data)
 
       // Choose a random brewery from the given array
       const randomBrewery = data[Math.floor(Math.random() * data.length)];
@@ -173,6 +179,7 @@ function abbreviate(input, to) {
 
 // function to grab data from city and display on page
 const renderBreweryCards = (brewery) => {
+    $('.brewery-card').remove();
   // rendering data fetched to page
   const breweryCity = brewery.city;
   const breweryContainer = $("#brewery-container");
@@ -209,27 +216,22 @@ const renderBreweryCards = (brewery) => {
 
 //   creates one array for all fetched data needed for local storage
   let saveData = {
-    breweryName: brewery.name,
-    breweryAddress: brewery.city,
-    breweryCity: brewery.address,
-    breweryUrl: brewery.website_url,
+    id: brewery.name.replace(/\s/g, '-').toLowerCase(),
+    name: brewery.name,
+    brewery_type: brewery.brewery_type,
+    street: brewery.street,
+    city: brewery.city,
+    state: brewery.state,
+    website_url: brewery.website_url,
   };
 
 //   pushes saveData array into empty Save Array for local storage
-  saveArray.push(saveData);
+  saveArray.push(saveData)
   saveInfo(saveData);
-
-//   styles map container (although, I don't think this does anything I am not deleting before MVP presentation in case I break the code)
-  let mapContainer = `
-    <div class="is-two-thirds" id="map" style="height: 400px; width: 400px"></div>
-  `;
 
 //   Pass data through FindLatLon function that is necessary for API call to generate map
   findLatLon(brewery.street, brewery.city, formatStateCode, brewery.name);
 };
-
-// Save info on each card with button click if possible?
-// ^^^ This is just an idea note
 
 // Save data function for local storage
 function saveInfo(saveData) {
@@ -238,7 +240,18 @@ function saveInfo(saveData) {
     event.stopPropagation();
     event.stopImmediatePropagation();
     console.log(saveData);
-    localStorage.setItem(saveData.breweryName, JSON.stringify(saveData));
+
+    if (!localStorage.getItem(saveData.id)){
+        localStorage.setItem(saveData.id, JSON.stringify(saveData))
+        // create a button that will reference brewery name
+        let savedBreweryBtn = $('<button>')
+        .attr('id', saveData.id)
+        .text(saveData.name)
+        .addClass('saved-brewery');
+
+        // append saved brewery var to location
+        $('#saved-locations').append(savedBreweryBtn);
+    }
   });
 }
 
@@ -286,5 +299,24 @@ async function initMap(lat, lon, name) {
     infoWindow.open(map, marker);
   });
 }
+
+if (localStorage.length >0) {
+    for (let i = 0; i < localStorage.length; i++) {
+        let breweryId = localStorage.key(i);
+        let breweryData = JSON.parse(localStorage.getItem(breweryId));
+        let savedBrewery = $('<button>')
+        .attr('id', breweryData.id)
+        .text(breweryData.name)
+        .addClass('saved-brewery');
+        $('#saved-locations').append(savedBrewery); 
+    }
+}
+
+$('.saved-brewery').on('click', function (event) {
+    $('.brewery-card').remove();
+    let breweryId = $(this).attr('id');
+    let breweryData = JSON.parse(localStorage.getItem(breweryId));
+    renderBreweryCards(breweryData);
+});
 
 $("#search-form").on("submit", handleSubmit);
