@@ -40,13 +40,11 @@
 ### Page Bugs
 - Needs more error handling on city search.
 - Allow for more thorough search instead of a 20 brewery limit based on alphabetical order (if possible)
-- Generate 4 breweries on search and allow maps to be displayed based on card click (auto-displaying the first?)
 - Do Not Generate Closed or Planned breweries.
+- Allow saved buttons to load page on click before page refresh.
 
 ### Plans for Future Changes
 
-- Either have maps appear per card append or allow an on click function where the map reloads to your desired page.
-- More Style added to button, headers, and page (particularly icons).
 - Make Search for Near button, that prompts (modal) you to search for nearby breweries based on your current location
 
 ### USER STORY
