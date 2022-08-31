@@ -1,4 +1,4 @@
-// variables from HTML
+// global variables declared
 const saveArray = [];
 const apiKey = "AIzaSyAnLQaZQJJSUlJR12J-vpuXghllvQP2nx4";
 let validStateCodes = [
@@ -66,9 +66,7 @@ const breweryContainerEl = document.querySelector("#brewery-container");
 const searchButton = document.querySelector("#search-btn");
 // button action to take input data and feed to brewery by city API
 
-// need to make this a reusable function
-// function to grab data from breweries by city\
-
+// function to handle submit from HTML and pass it through JS
 function handleSubmit(event) {
   event.preventDefault();
   const city = $("#city").val().trim();
@@ -76,27 +74,27 @@ function handleSubmit(event) {
   callCityApi(city);
 }
 
+// Function to call city data from HTML input and pass it through Open Brewery API to generate appropriate data
 function callCityApi(city) {
   const apiUrlCity = `https://api.openbrewerydb.org/breweries?by_city=${city}&size=20`;
 
+//   fetch data from OpenBrewery API
   fetch(apiUrlCity)
-    // console.log(apiUrlCity);
-    // fetch data from API
+    // take fetched data and formulate needed response for webpage
     .then(function (response) {
       return response.json();
     })
     .then(function (data) {
-      // console.log(data)
 
       // Choose a random brewery from the given array
       const randomBrewery = data[Math.floor(Math.random() * data.length)];
-      // console.log(randomBrewery)
-      // start rendering to screen
+
+      // start rendering data needed to screen
       renderBreweryCards(randomBrewery);
     });
 }
 
-// https://maps.googleapis.com/maps/api/geocode/json?address=1600+Amphitheatre+Parkway,+Mountain+View,+CA&key=YOUR_API_KEY
+// Abbreviate full state names for later google map usage.
 function abbreviate(input, to) {
   var states = [
     ["Arizona", "AZ"],
@@ -151,6 +149,7 @@ function abbreviate(input, to) {
     ["Wyoming", "WY"],
   ];
 
+//   directs data to choose abbreviated data
   if (to == "abbr") {
     input = input.replace(/\w\S*/g, function (txt) {
       return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
@@ -160,6 +159,7 @@ function abbreviate(input, to) {
         return states[i][1];
       }
     }
+    // directs state data to full nme
   } else if (to == "name") {
     input = input.toUpperCase();
     for (i = 0; i < states.length; i++) {
@@ -170,14 +170,8 @@ function abbreviate(input, to) {
   }
 }
 
-// Save city searches?
-// const searchCont = $('#search-container');
-// const cityBtn = $('<button>').text(city);
-
-// searchCont.append(cityBtn);
 
 // function to grab data from city and display on page
-
 const renderBreweryCards = (brewery) => {
   // rendering data fetched to page
   const breweryCity = brewery.city;
@@ -186,27 +180,22 @@ const renderBreweryCards = (brewery) => {
   const breweryCard = $("<div>")
     .attr("id", "brewery-card")
     .addClass("brewery-card bg-gray-300 rounded-lg p-4 m-4 w-80 is-two-thirds");
-
-  // const nameIcon = $('<i>').addClass("fa-solid fa-building").text(" ");
   const breweryName = $("<h2>").text(brewery.name).addClass("is-size-3");
-  //   const typeIcon = $('<i>').addClass("fa-solid fa-minimize").text(" ");
   const breweryType = $("<p>").text(brewery.brewery_type);
   const breweryAddress = $("<p>").text(
     brewery.street + ", " + brewery.city + ", " + brewery.state
   );
-  //   const addressIcon = $('<i>').addClass("fa-solid fa-map-location").text(" ");
   const breweryPhone = $("<p>").text(brewery.phone);
-  //   const phoneIcon = $('<i>').addClass("fa-solid fa-mobile-retro").text(" ");
   const breweryWebsite = $("<a>")
     .text(brewery.website_url)
     .attr("href", brewery.website_url);
-  // const websiteIcon = $('<i>').addClass("fa-solid fa-laptop").text(" ");
   const saveBtn = $("<button>")
     .attr("id", "save-btn-id")
     .addClass("save-btn")
     .text("Save This Info!");
   let formatStateCode = abbreviate(brewery.state, "abbr");
 
+//   Takes all gathered data and appends it to the brewery card
   breweryCard.append(
     breweryName,
     breweryType,
@@ -215,8 +204,10 @@ const renderBreweryCards = (brewery) => {
     breweryWebsite,
     saveBtn
   );
+//   brewery card Appends to HTML brewery container.
   breweryContainer.append(breweryCard);
 
+//   creates one array for all fetched data needed for local storage
   let saveData = {
     breweryName: brewery.name,
     breweryAddress: brewery.city,
@@ -224,22 +215,26 @@ const renderBreweryCards = (brewery) => {
     breweryUrl: brewery.website_url,
   };
 
+//   pushes saveData array into empty Save Array for local storage
   saveArray.push(saveData);
-  console.log();
   saveInfo(saveData);
 
+//   styles map container (although, I don't think this does anything I am not deleting before MVP presentation in case I break the code)
   let mapContainer = `
     <div class="is-two-thirds" id="map" style="height: 400px; width: 400px"></div>
   `;
 
+//   Pass data through FindLatLon function that is necessary for API call to generate map
   findLatLon(brewery.street, brewery.city, formatStateCode, brewery.name);
-  //   displayMap()
 };
 
 // Save info on each card with button click if possible?
+// ^^^ This is just an idea note
 
+// Save data function for local storage
 function saveInfo(saveData) {
   $(".save-btn").on("click", function (event) {
+    // Stops page from saving multiple cards, now only one card's information is saved at a time
     event.stopPropagation();
     event.stopImmediatePropagation();
     console.log(saveData);
@@ -247,7 +242,9 @@ function saveInfo(saveData) {
   });
 }
 
+// Use gathered data from OpenBrewery fetch and passes this data on to Google Map API to start location focus for map
 async function findLatLon(street, city, state, name) {
+    // replaces spaces in data with +'s so the data in functional for Google Maps API
   let formatStreet = street.replace(/\s/g, "+");
   let formatCity = city.replace(/\s/g, "+");
 
@@ -266,6 +263,7 @@ async function findLatLon(street, city, state, name) {
   }
 }
 
+// Generates Map and allows passed information to be properly displayed to page
 async function initMap(lat, lon, name) {
   // Create a map object and specify the Dom element for display.
   let map = new google.maps.Map(document.getElementById("map-container"), {
@@ -274,6 +272,7 @@ async function initMap(lat, lon, name) {
     zoom: 14,
   });
 
+//   Creates marker on the page for direct location
   let marker = new google.maps.Marker({
     position: { lat: lat, lng: lon },
     map: map,
@@ -289,28 +288,3 @@ async function initMap(lat, lon, name) {
 }
 
 $("#search-form").on("submit", handleSubmit);
-// parse saved data to page below buttons
-
-// pull map data from google map api
-
-// function to display map on page
-// function displayMap() {
-
-// }
-// let street = brewery.street;
-// let city = brewery.city;
-// let state = brewery.state;
-// let country = brewery.country;
-
-// const apiUrlMap = `https://maps.googleapis.com/maps/api/geocode/json?new_forward_geocoder=true&address=${street},+${city},+${state}&key=AIzaSyAnLQaZQJJSUlJR12J-vpuXghllvQP2nx4`;
-
-// fetch(apiUrlMap)
-// // might not need to json map
-// // .then(function(response){
-// //     return(response.json());
-// // })
-// const mapContainer = $('#map-container');
-
-// function to display maps
-
-// function to Make cards clickable to google map link
