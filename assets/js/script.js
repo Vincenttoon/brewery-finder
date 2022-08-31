@@ -271,7 +271,7 @@ async function initMap(lat, lon, name) {
   let map = new google.maps.Map(document.getElementById("map-container"), {
     center: { lat: lat, lng: lon },
     scrollwheel: false,
-    zoom: 13,
+    zoom: 14,
   });
 
   let marker = new google.maps.Marker({
