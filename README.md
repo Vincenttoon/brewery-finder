@@ -8,8 +8,8 @@
 
 ## Deployment team
 
-[Vincent Toon](https://github.com/Vincenttoon)
-[Rafiqullah Nasrat](https://github.com/rafiqnasrat)
+[Vincent Toon](https://github.com/Vincenttoon)__
+[Rafiqullah Nasrat](https://github.com/rafiqnasrat)__
 [Jospeh Weidhass](https://github.com/weidhaas)
 
 ## Instructions for Challenge
@@ -27,7 +27,7 @@
 
 ## Third Part API's Used
 
-[Open Brewery DB](https://www.openbrewerydb.org/)
+[Open Brewery DB](https://www.openbrewerydb.org/)__
 [Google Maps Platform](https://developers.google.com/maps)
 
 ### Things Learned
