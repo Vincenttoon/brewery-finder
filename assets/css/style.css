@@ -105,6 +105,7 @@
 
 .header-head {
     font-weight: 600;
+    font-family: 'Luminari', fantasy;
     text-decoration: underline;
     text-decoration-color: var(--third)
 }
@@ -126,4 +127,16 @@
 .brewery-container {
     padding-left: 35px;
     padding-top: 5px;
+}
+
+.result-head-text {
+    font-family: 'Luminari', fantasy;
+}
+
+.search-txt {
+    font-family: 'Luminari', fantasy;
+}
+
+.user-note-text {
+    font-family: 'Luminari', fantasy;
 }
