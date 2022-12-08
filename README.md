@@ -12,7 +12,6 @@
 
 [Vincent Toon](https://github.com/Vincenttoon) <br />
 [Rafiqullah Nasrat](https://github.com/rafiqnasrat) <br />
-[Jospeh Weidhass](https://github.com/weidhaas)
 
 ## Instructions for Challenge
 
